@@ -3,23 +3,25 @@
   <%- include('./partials/head') %>
   <body>
     <%- include('./partials/nav') %>
-    <div class="blogs content">
-      <h2>Recent Blogs</h2>
-      <% if (blogs.length) { %>
-      <ul>
-        <% blogs.forEach((blog) => { %>
-        <li>
-          <h3 class="title">
-            <a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
-          </h3>
-          <p class="snippet"><%= blog.snippet %></p>
-        </li>
-        <% }); %>
-      </ul>
-      <% } else { %>
-      <p>No blogs found.</p>
-      <% } %>
-    </div>
+    <main>
+      <div class="blogs content">
+        <h2>Recent Blogs</h2>
+        <% if (blogs.length) { %>
+        <ul>
+          <% blogs.forEach((blog) => { %>
+          <a href="/blogs/<%= blog._id %>">
+            <li>
+              <h3 class="title"><%= blog.title %></h3>
+              <p class="snippet"><%= blog.snippet %></p>
+            </li>
+          </a>
+          <% }); %>
+        </ul>
+        <% } else { %>
+        <p>No blogs found.</p>
+        <% } %>
+      </div>
+    </main>
     <%- include('./partials/footer') %>
   </body>
 </html>

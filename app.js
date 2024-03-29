@@ -2,12 +2,13 @@ const express = require("express")
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 const blogRoutes = require("./routes/blogRoutes")
+const methodOverride = require("method-override")
 
 const app = express()
 require("dotenv").config()
 
 // connect to MongoDB
-const dbURI = `mongodb+srv://chrisjameshal:${process.env.MONGO_DB_PASSWORD}@blog-db.0o1fbw8.mongodb.net/node-blog?retryWrites=true&w=majority&appName=blog-db`
+const dbURI = process.env.DB_URI
 mongoose
   .connect(dbURI)
   .then((result) => app.listen(3000)) // only listen for requests if we have connected to the database
@@ -21,6 +22,7 @@ app.set("view engine", "ejs")
 app.use(express.static("public")) // serve static files
 app.use(morgan("dev")) // log requests to the console
 app.use(express.urlencoded({ extended: true })) // parse form data
+app.use(methodOverride("_method"))
 
 // Express looks through this code from top to bottom for matches
 app.get("/", (req, res) => {

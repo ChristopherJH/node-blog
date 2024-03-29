@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head') %>
+  <body>
+    <%- include('./partials/nav') %>
+    <main>
+      <div class="create-blog content create-blog-wrapper">
+        <div>
+          <h2>Edit blog</h2>
+          <p>Edit an existing blog here.</p>
+        </div>
+        <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
+          <!-- Hidden input field that tells the server to use the PUT method instead of the default POST method. -->
+          <label for="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            required
+            value="<%= blog.title %>"
+          />
+
+          <label for="snippet">Snippet</label>
+          <input
+            id="snippet"
+            name="snippet"
+            required
+            value="<%= blog.snippet %>"
+          />
+
+          <label for="body">Body</label>
+          <textarea id="body" name="body" required><%= blog.body %></textarea>
+
+          <button type="submit" class="button--success">Update</button>
+        </form>
+      </div>
+    </main>
+    <%- include('./partials/footer') %>
+  </body>
+</html>

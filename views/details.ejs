@@ -4,16 +4,35 @@
   <body>
     <%- include('./partials/nav') %>
     <main>
-      <div class="details content">
-        <h2><%= blog.title %></h2>
-        <p><%= blog.createdAt.toLocaleDateString() %></p>
-        <div class="content">
-          <p><%= blog.snippet %></p>
-          <p><%= blog.body %></p>
+      <div class="top-actions">
+        <a href="/blogs" class="back"
+          ><button class="button--secondary" type="button">Back</button></a
+        >
+        <div class="details-buttons-container">
+          <a href="/blogs/<%= blog._id %>/edit"
+            ><button type="button">Edit</button></a
+          >
+          <button
+            data-doc="<%= blog._id %>"
+            type="button"
+            class="button--danger"
+          >
+            Delete
+          </button>
         </div>
-        <div class="content">
-          <a href="/blogs">Back</a>
-          <a class="delete" data-doc="<%= blog._id %>">Delete</a>
+      </div>
+      <div class="details">
+        <h2><%= blog.title %></h2>
+        <div class="created-at">
+          <p class="created-at-time">
+            <%= blog.createdAt.toLocaleTimeString() %>
+          </p>
+          <p class="created-at-date">
+            <%= blog.createdAt.toLocaleDateString() %>
+          </p>
+        </div>
+        <div>
+          <p class="blog-body"><%= blog.body %></p>
         </div>
       </div>
     </main>
