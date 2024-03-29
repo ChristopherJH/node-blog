@@ -4,7 +4,7 @@ This is a simple blog web application built with Node.js and MongoDB.
 ## Features
 - Create Posts: Authenticated users can create new blog posts.
 - Read Posts: Users can view all blog posts on the homepage.
-- Delete Posts: Post creators can delete their own posts.
+- Delete & Edit Posts: Post creators can delete and edit posts.
 
 ## Technologies Used
 - Node.js: JavaScript runtime environment for server-side development.
